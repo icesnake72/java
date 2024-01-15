@@ -21,7 +21,7 @@ public class TextIO {
         File file = new File(fileName);
         StringBuilder sb = new StringBuilder();
         try(FileReader fReader = new FileReader(file)) {
-            // fReader.read(); // 한방에 text file의 모든 내용 읽기
+            // fReader.read(); // 한 글자씩 읽음
             char[] buffer = new char[128];
             int readBytes;
             while( (readBytes = fReader.read(buffer))!=-1 ) {
