@@ -70,5 +70,13 @@ public class FileIOTest {
         } catch (IOException | ClassNotFoundException | RuntimeException e) {
             System.out.println( e.getMessage() );
         }
+
+//        System.out.println(Integer.MAX_VALUE);
+//        System.out.println(Long.MAX_VALUE);
+//
+//        // String str = "hello";
+//        String str = new String("hello");
+//        String ptr = str;
+
     }
 }
