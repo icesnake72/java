@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Optional;
+import java.util.function.Consumer;
 
 public class FileIOTest {
     public static void main(String[] args) {
@@ -36,12 +37,35 @@ public class FileIOTest {
             System.out.println(e.getMessage());
         }
 
-
         try {
             Optional<Person> byPerson = ObjectIO.loadPerson("kang.per");
             byPerson.orElseThrow(() -> new RuntimeException("객체를 정상적으로 로딩하지 못했습니다."));
             Person fileObject = byPerson.get();
             System.out.println( fileObject );
+
+        } catch (IOException | ClassNotFoundException | RuntimeException e) {
+            System.out.println( e.getMessage() );
+        }
+
+
+        Family<Person> fam = new Family<>();
+        fam.add( kang );
+        fam.add( yoo );
+        fam.add( park );
+
+        try {
+            ObjectIO.saveFamily("person.fam", fam);
+        } catch (IOException e) {
+            System.out.println( e.getMessage() );
+        }
+
+        // byFam.orElseThrow( parameter );
+
+        try {
+            Optional<Family<Person>> byFam = ObjectIO.loadFamily("person.fam");
+            byFam.orElseThrow(() -> new RuntimeException("객체를 정상적으로 로딩하지 못했습니다."));
+            Family<Person> fileObject = byFam.get();
+            fileObject.showItems();
 
         } catch (IOException | ClassNotFoundException | RuntimeException e) {
             System.out.println( e.getMessage() );

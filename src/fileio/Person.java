@@ -1,6 +1,7 @@
 package fileio;
 
 import java.io.Serializable;
+import java.util.function.Consumer;
 
 public class Person implements Serializable {
     private int age;
@@ -17,6 +18,10 @@ public class Person implements Serializable {
         this.age = age;
         this.name = name;
         this.tel = tel;
+    }
+
+    public void someOperate(Consumer<Person> obj) {
+
     }
 
     @Override
